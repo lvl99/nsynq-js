@@ -1,11 +1,12 @@
 {
-  "name": "nsynq",
+  "name": "nsynq-js",
   "version": "0.1.0",
   "authors": [
     "Matt Scheurich <matt@lvl99.com>"
   ],
-  "description": "Schedule JS operations along a timeline progression defined by `n`",
+  "description": "Schedule JavaScript operations along a timeline progression defined by `n`",
   "keywords": [
+    "javascript",
     "timeline",
     "interval",
     "timeout",

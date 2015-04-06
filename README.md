@@ -1,15 +1,13 @@
 # *nsynq
 
-Schedule JS operations along a timeline progression defined by `n`.
+Schedule JavaScript operations along a timeline progression defined by `n`.
 
-CSS animations are nice, but what if you want to do some heavier things? Something more interactive and in sync with other tandem operations? *nsynq's your pal.
+CSS animations are nice, but what if you want to do some heavier things? Something more interactive and in sync with other tandem operations like audio and video? *nsynq could be your friend indeed.
 
 
 ## About
 
-I wanted to have some operations play at certain points on a timeline, e.g. co-ordinated to music,
-and I wanted a really easy way to notate the points on the timeline, so I built this! It seems to
-work OK so far...
+I wanted to have some operations play at certain points on a timeline, e.g. co-ordinated to specific streaming music files, and I wanted a really easy way to notate the points on the timeline, so I built this! It seems to work OK so far...
 
 
 ## Installation
@@ -62,7 +60,7 @@ Works out of the box. Doesn't require any external libraries.
 ## Todo
 
 * Dynamic timeline instead of having to render when changing operations
-* Figure out better compensation from frame skipping (`approx` and `around` expressions can kind of do that)
+* Figure out better compensation from frame skipping (`approx` and `around` expressions can kind of do that, but it's not perfect)
 
 
 ## Releases
