@@ -1,6 +1,6 @@
 {
   "name": "nsynq-js",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha",
   "description": "Schedule JavaScript operations along a timeline progression defined by `n`",
   "main": "nsynq.js",
   "directories": {

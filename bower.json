@@ -1,6 +1,6 @@
 {
   "name": "nsynq-js",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha",
   "authors": [
     "Matt Scheurich <matt@lvl99.com>"
   ],
@@ -17,6 +17,7 @@
     "play",
     "seek"
   ],
+  "main": "nsynq.js",
   "license": "MIT",
   "homepage": "http://www.lvl99.com/",
   "ignore": [
