@@ -25,24 +25,36 @@ Works out of the box. Doesn't require any external libraries.
 
 ## Usage
 
-*nsynq assumes that you've got a timeline that progresses from zero to `timelineLength`. Any point along that timeline is defined as `n`:
+*nsynq assumes that you've got a timeline that progresses from zero to `timelineLength`. Any point along that timeline is defined as `n`. We also define an object that holds the operations you wish to perform and any expression statements that those operations will get fired at point `n`:
 
+
+  var output = document.getElementById('output');
+
+  // The length of the timeline to render. Must always have a fixed length
   var timelineLength = 200;
+
+  // The operations object containing the expressions and operations to fire
   var operations = {
     'when n eq 0': function () {
-      console.log( 'Let us begin...' );
+      output.innerHTML = '<h1>Let us begin...</h1>';
     },
-    'do per 8 n': function ( n ) {
-      console.log( '8 baller' );
+    'do per 1 n': function () {
+      output.innerHTML += '<br>&nbsp;&nbsp;&nbsp;' + n + ' : ';
+    },
+    'when n around 40:2': function ( n ) {
+      output.innerHTML += ' (around 40:2, matches >= 38 && <= 42)';
+    },
+    'when n gte 150, do approx 10:2 n': function ( n ) {
+      output.innerHTML += ' <strong>Holla at you from ' + n + '</strong>';
     },
     'when n within 50-150, do per 10 n': function ( n ) {
-      console.log( 'n is ' + n );
+      output.innerHTML += ' (within 50-150, per 10 n)';
     },
-    'when n gte 15, do approx 12:4 n': function ( n ) {
-      console.log( 'Holla at you from ' + n );
+    'do per 8 n': function ( n ) {
+      output.innerHTML += ' <em>(' + n + ' is an 8 baller)</em>';
     },
-    'when n eq -0': function ( n ) {
-      console.log( 'Baby, bye-bye-bye (the end)' );
+    'when n eq 200': function () {
+      output.innerHTML += '<h3>... Baby, bye-bye-bye (the end)</h3>';
     }
   };
 
@@ -52,15 +64,21 @@ Works out of the box. Doesn't require any external libraries.
   function animate() {
     requestAnimationFrame( animate );
 
-    n++;
-    nsynqWatcher.seek(n);
+    if ( n <= timelineLength ) {
+      nsynqWatcher.seek(n);
+      n++;
+    }
   }
+
+  animate();
+
+See the [basic example](/examples/basic.html) to view how the above code behaves.
 
 
 ## Todo
 
-* Dynamic timeline instead of having to render when changing operations
-* Figure out better compensation from frame skipping (`approx` and `around` expressions can kind of do that, but it's not perfect)
+* Pre-computing makes it faster when playing back timeline operations, but perhaps I could put in a switch to choose between dynamic or static timeline behaviours
+* Figure out better compensation from frame skipping (`approx` and `around` expressions can kind of do that, but it's not entirely perfect)
 
 
 ## Releases

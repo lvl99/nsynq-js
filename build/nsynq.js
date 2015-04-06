@@ -40,6 +40,14 @@ var Nsynq = function ( timelineLength, ops ) {
    */
   self.timeline = [];
 
+  /* The length of the timeline to render to.
+   *
+   * @method timelineLength
+   * @type {int}
+   * @since 0.1.0-alpha
+   */
+  self.timelineLength = 0;
+
   /* The operations to fire at points on the timeline. Points are marked by
    * string expressions.
    *
@@ -79,13 +87,11 @@ var Nsynq = function ( timelineLength, ops ) {
 
     // `n eq 100` matches to `n == 100`
     eq: function ( n, a ) {
-      if ( a === '-0' ) a = self.timeline.length;
       return n == parseInt( a, 10 );
     },
 
     // `n is 100` matches to `n === 100`
     is: function ( n, a ) {
-      if ( a === '-0' ) a = self.timeline.length;
       return n === parseInt( a, 10 );
     },
 
@@ -141,12 +147,16 @@ var Nsynq = function ( timelineLength, ops ) {
    */
   self.renderTimeline = function ( timelineLength, ops ) {
     var timeline = [];
+    self.timelineLength = timelineLength;
     self.ops = ops || self.ops;
     self._ops = [];
 
     // Ops in invalid or no timelineLength set, abort further actions
-    if ( !self.ops || !self.timelineLength )
+    if ( !self.ops || !self.timelineLength ) {
+      if ( !self.ops ) console.log( 'No operations to render' );
+      if ( !self.timelineLength ) console.log( 'No timeline length to render to' );
       return;
+    }
 
     // Process each operation (defined by an expression key, e.g. `n eq 500`, `n within 100-200, do per 50 n`)
     for ( var t in self.ops ) {
@@ -256,7 +266,7 @@ var Nsynq = function ( timelineLength, ops ) {
 
     if ( ops && ops.length > 0 ) {
       for ( var x = 0; x < ops.length; x++ ) {
-        ops[x](n);
+        ops[x]( n );
       }
     }
   };
@@ -268,4 +278,5 @@ var Nsynq = function ( timelineLength, ops ) {
 
 };
 
+var module = module || {};
 module.exports = Nsynq;
