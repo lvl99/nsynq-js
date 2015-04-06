@@ -1,0 +1,28 @@
+{
+  "name": "nsynq",
+  "version": "0.1.0",
+  "authors": [
+    "Matt Scheurich <matt@lvl99.com>"
+  ],
+  "description": "Schedule JS operations along a timeline progression defined by `n`",
+  "keywords": [
+    "timeline",
+    "interval",
+    "timeout",
+    "queue",
+    "delay",
+    "sync",
+    "syncronise",
+    "play",
+    "seek"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.lvl99.com/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

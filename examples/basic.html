@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>*nsynq Example</title>
+  </head>
+  <body>
+    <p>Open up your Javascript console...</p>
+    <script type="text/javascript" src="../build/nsynq.min.js"></script>
+    <script type="text/javascript">
+      var timelineLength = 200;
+      var operations = {
+        'when n eq 0': function () {
+          console.log( 'Let us begin...' );
+        },
+        'do per 8 n': function ( n ) {
+          console.log( '8 baller' );
+        },
+        'when n within 50-150, do per 10 n': function ( n ) {
+          console.log( 'n is ' + n );
+        },
+        'when n gte 15, do approx 12:4 n': function ( n ) {
+          console.log( 'Holla at you from ' + n );
+        },
+        'when n eq -0': function ( n ) {
+          console.log( 'Baby, bye-bye-bye (the end)' );
+        }
+      };
+
+      var nsynqWatcher = new Nsynq( timelineLength, operations );
+      var n = 0;
+
+      function animate() {
+        requestAnimationFrame( animate );
+
+        if ( n < timelineLength ) {
+          nsynqWatcher.seek(n);
+          n++;
+        }
+      }
+    </script>
+  </body>
+</html>
